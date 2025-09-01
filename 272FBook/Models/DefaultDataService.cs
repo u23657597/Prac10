@@ -115,7 +115,7 @@ namespace RandomCourseFBook.Models
 
             SqlConnection Connection3 = new SqlConnection(ConnectionString);
 
-            string Query = "SELECT * FROM Students WHERE Sex = " + sex + " AND  grade NOT BETWEEN " + min + " AND " + max + "";
+            string Query = "SELECT * FROM Images";
 
             SqlCommand GetLearners3 = new SqlCommand(Query, Connection3);
             SqlDataReader reader3;
