@@ -50,8 +50,8 @@ namespace RandomCourseFBook.Models
                 {
                     students.Add(new Student { FirstName = reader["FirstName"].ToString() });
                     students.Add(new Student { Surname = reader["LastName"].ToString() });
-                    students.Add(new Student { FirstName = reader["Sex"].ToString() });
-                    students.Add(new Student { FirstName = reader["Grade"].ToString() });
+                    students.Add(new Student { Sex = reader["Sex"].ToString() });
+                    students.Add(new Student { Grade = Convert.ToInt32(reader["Grade"]) });
                     reader.Close();
                 }
             }
@@ -90,8 +90,8 @@ namespace RandomCourseFBook.Models
                 {
                     students.Add(new Student { FirstName = reader2["FirstName"].ToString() });
                     students.Add(new Student { Surname = reader2["LastName"].ToString() });
-                    students.Add(new Student { FirstName = reader2["Sex"].ToString() });
-                    students.Add(new Student { FirstName = reader2["Grade"].ToString() });
+                    students.Add(new Student { Sex = reader2["Sex"].ToString() });
+                    students.Add(new Student { Grade = Convert.ToInt32(reader2["Grade"]) });
                     reader2.Close();
                 }
             }
@@ -126,7 +126,7 @@ namespace RandomCourseFBook.Models
                 reader3 = GetLearners3.ExecuteReader();
                 while (reader3.Read())
                 {
-                    images.Add(new Image { StudentID = reader3["StudentID"] });
+                    //images.Add(new Image { StudentID = reader3["StudentID"] });
                     images.Add(new Image { ImageRaw = reader3["B64Image"].ToString() });                   
                     reader3.Close();
                 }
