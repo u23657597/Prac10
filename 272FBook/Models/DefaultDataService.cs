@@ -126,7 +126,7 @@ namespace RandomCourseFBook.Models
                 reader3 = GetLearners3.ExecuteReader();
                 while (reader3.Read())
                 {
-                    //images.Add(new Image { StudentID = reader3["StudentID"] });
+                    images.Add(new Image { StudentID = Convert.ToInt32(reader3["StudentID"]) });
                     images.Add(new Image { ImageRaw = reader3["B64Image"].ToString() });                   
                     reader3.Close();
                 }
