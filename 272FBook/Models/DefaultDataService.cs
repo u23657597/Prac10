@@ -52,12 +52,13 @@ namespace RandomCourseFBook.Models
                     students.Add(new Student { Surname = reader["LastName"].ToString() });
                     students.Add(new Student { Sex = reader["Sex"].ToString() });
                     students.Add(new Student { Grade = Convert.ToInt32(reader["Grade"]) });
-                    reader.Close();
+                    
                 }
+                reader.Close();
             }
             catch (Exception ex)
             {
-                String Message = ex.Message;
+                Console.WriteLine(ex.Message);
             }
             finally 
             {
@@ -77,7 +78,7 @@ namespace RandomCourseFBook.Models
 
             SqlConnection Connection2 = new SqlConnection(ConnectionString);
 
-            string Query = "SELECT * FROM Students WHERE Sex = " + sex + " AND  grade NOT BETWEEN " + min +" AND " + max + "";
+            string Query = "SELECT * FROM Students WHERE Sex = '" + sex + "' AND  grade BETWEEN " + min +" AND " + max + "";
 
             SqlCommand GetLearners2 = new SqlCommand(Query, Connection2);
             SqlDataReader reader2;
@@ -91,13 +92,13 @@ namespace RandomCourseFBook.Models
                     students.Add(new Student { FirstName = reader2["FirstName"].ToString() });
                     students.Add(new Student { Surname = reader2["LastName"].ToString() });
                     students.Add(new Student { Sex = reader2["Sex"].ToString() });
-                    students.Add(new Student { Grade = Convert.ToInt32(reader2["Grade"]) });
-                    reader2.Close();
+                    students.Add(new Student { Grade = Convert.ToInt32(reader2["Grade"]) });                    
                 }
+                reader2.Close();
             }
             catch (Exception ex)
             {
-                String Message = ex.Message;
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -127,13 +128,14 @@ namespace RandomCourseFBook.Models
                 while (reader3.Read())
                 {
                     images.Add(new Image { StudentID = Convert.ToInt32(reader3["StudentID"]) });
-                    images.Add(new Image { ImageRaw = reader3["B64Image"].ToString() });                   
-                    reader3.Close();
+                    images.Add(new Image { ImageRaw = reader3["B64Image"].ToString() });                 
+                    
                 }
+                reader3.Close();
             }
             catch (Exception ex)
             {
-                String Message = ex.Message;
+                Console.WriteLine(ex.Message);
             }
             finally
             {
