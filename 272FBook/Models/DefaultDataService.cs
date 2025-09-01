@@ -111,6 +111,34 @@ namespace RandomCourseFBook.Models
             List<Image> images = new List<Image>();
             //TODO: Retrieve all the information associated with the images
 
+            ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            SqlConnection Connection3 = new SqlConnection(ConnectionString);
+
+            string Query = "SELECT * FROM Students WHERE Sex = " + sex + " AND  grade NOT BETWEEN " + min + " AND " + max + "";
+
+            SqlCommand GetLearners3 = new SqlCommand(Query, Connection3);
+            SqlDataReader reader3;
+
+            try
+            {
+                Connection3.Open();
+                reader3 = GetLearners3.ExecuteReader();
+                while (reader3.Read())
+                {
+                    images.Add(new Image { StudentID = reader3["StudentID"] });
+                    images.Add(new Image { ImageRaw = reader3["B64Image"].ToString() });                   
+                    reader3.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                String Message = ex.Message;
+            }
+            finally
+            {
+                Connection3.Close();
+            }
 
             return images;
         }       
