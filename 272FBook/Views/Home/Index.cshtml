@@ -51,20 +51,24 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Grade</th>
                     <th scope="col">Avatar</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var studentRecord in Model.Students)
-                {
+                 {
                     <tr>
                         <td>@studentRecord.FirstName</td>
                         <td>@studentRecord.Surname</td>
+                        <td>@studentRecord.Sex</td>
+                        <td>@studentRecord.Grade</td>
                         <td><img src="data:image/png;base64,@Model.GetImageOf(studentRecord.ID)" alt="The Student's Avatar" width="150" height="150" /></td> <!--Replace the id with the an image associated with the student-->
-                    </tr>
-                }
+                    </tr>                    
+                 }
             </tbody>
         </table>
     </div>
